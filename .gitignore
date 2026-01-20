@@ -1,0 +1,13 @@
+# Binaries
+minikube-linux-amd64
+kubectl
+
+# Python
+__pycache__/
+*.pyc
+
+# Docker
+*.log
+
+# OS
+.DS_Store
