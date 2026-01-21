@@ -14,13 +14,13 @@ spec:
     spec:
       # containers:
       # - name: myproject
-      #   image: sanjayaram/myproject:v10-20260121-200116
+      #   image: sanjayaram/myproject:v11-20260121-201025
       #   ports:
       #   - containerPort: 5000
       containers:
       - name: myproject
-        # image: sanjayaram/myproject:v10-20260121-200116
-        image: sanjayaram/myproject:v10-20260121-200116
+        # image: sanjayaram/myproject:v11-20260121-201025
+        image: sanjayaram/myproject:v11-20260121-201025
         ports:
         - containerPort: 5000
 env:
