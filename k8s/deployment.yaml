@@ -19,6 +19,7 @@ spec:
       #   - containerPort: 5000
       containers:
       - name: myproject
-        image: sanjayaram/myproject:v9-20260121-195443
+        # image: sanjayaram/myproject:e2306c321954c1557964e2577dd9863b2ccf6696
+        image: sanjayaram/myproject:latest
         ports:
         - containerPort: 5000
