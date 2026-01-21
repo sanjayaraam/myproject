@@ -13,36 +13,52 @@ permissions:
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
+
     steps:
+      # 1️⃣ Checkout code
       - name: Checkout code
         uses: actions/checkout@v4
         with:
           persist-credentials: true
 
+      # 2️⃣ Generate human-readable image version
+      - name: Generate image version
+        run: |
+          VERSION="v${{ github.run_number }}-$(date +'%Y%m%d-%H%M%S')"
+          echo "IMAGE_VERSION=$VERSION" >> $GITHUB_ENV
+          echo "Using image version: $VERSION"
+
+      # 3️⃣ Login to DockerHub
       - name: Login to DockerHub
         uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
+      # 4️⃣ Build & push Docker image
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
           push: true
-          tags: sanjayaram/myproject:${{ github.sha }}
+          tags: |
+            sanjayaram/myproject:${{ env.IMAGE_VERSION }}
+            sanjayaram/myproject:latest
 
+      # 5️⃣ Update Kubernetes deployment manifest
       - name: Update Kubernetes manifest
         run: |
-          sed -i "s|{{IMAGE_TAG}}|${{ github.sha }}|g" k8s/deployment.yaml
+          sed -i "s|image: sanjayaram/myproject:.*|image: sanjayaram/myproject:${{ env.IMAGE_VERSION }}|g" k8s/deployment.yaml
 
+      # 6️⃣ Commit updated manifest back to main
       - name: Commit updated manifest
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
+
           if git diff --quiet; then
             echo "No changes to commit"
           else
             git add k8s/deployment.yaml
-            git commit -m "CD: deploy image ${{ github.sha }}"
+            git commit -m "CD: deploy ${IMAGE_VERSION}"
             git push origin HEAD:main
           fi
