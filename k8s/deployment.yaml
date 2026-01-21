@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
         - name: myproject
-          image: sanjayaram/myproject:v13-20260121-203843
+          image: sanjayaram/myproject:v14-20260121-204001
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 5000
