@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: myproject
-        image: sanjayaram/myproject:v10-20260121-200116
+        image: sanjayaram/myproject:v12-20260121-201657
         ports:
         - containerPort: 5000
