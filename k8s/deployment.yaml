@@ -12,8 +12,13 @@ spec:
       labels:
         app: myproject
     spec:
+      # containers:
+      # - name: myproject
+      #   image: sanjayaram/myproject:latest
+      #   ports:
+      #   - containerPort: 5000
       containers:
       - name: myproject
-        image: sanjayaram/myproject:v1
+        image: sanjayaram/myproject:{{IMAGE_TAG}}
         ports:
         - containerPort: 5000
