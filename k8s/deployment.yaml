@@ -12,19 +12,8 @@ spec:
       labels:
         app: myproject
     spec:
-      # containers:
-      # - name: myproject
-      #   image: sanjayaram/myproject:v10-20260121-200116
-      #   ports:
-      #   - containerPort: 5000
       containers:
       - name: myproject
-        # image: sanjayaram/myproject:v10-20260121-200116
         image: sanjayaram/myproject:v10-20260121-200116
         ports:
         - containerPort: 5000
-env:
-  - name: ENVIRONMENT
-    value: "kubernetes"
-  - name: APP_VERSION
-    value: "from-ci-cd"
