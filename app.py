@@ -5,10 +5,20 @@ from datetime import datetime
 
 app = Flask(__name__)
 
+# @app.route("/")
+# def home():
+#     return "SJ : MyProject : CI/CD enabled Kubernetes App."
+
 @app.route("/")
 def home():
-    return "SJ : MyProject : CI/CD enabled Kubernetes App."
-
+    return """
+    <h2>SJ : MyProject</h2>
+    <ul>
+        <li><a href="/health">/health</a></li>
+        <li><a href="/info">/info</a></li>
+        <li><a href="/about">/about</a></li>
+    </ul>
+    """
 
 @app.route("/health")
 def health():
