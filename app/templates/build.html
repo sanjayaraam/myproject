@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<h3>🔁 CI / CD Build Info</h3>
+
+<ul id="build"></ul>
+
+<script>
+fetch("/api/build")
+  .then(r => r.json())
+  .then(d => {
+    document.getElementById("build").innerHTML = `
+      <li>Image Version: ${d.image_version}</li>
+      <li>Git Commit: ${d.git_commit}</li>
+      <li>Build Time: ${d.build_time}</li>
+    `;
+  });
+</script>
+{% endblock %}

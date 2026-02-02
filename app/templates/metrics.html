@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<h3>⚙️ System Metrics</h3>
+
+<p>CPU: <span id="cpu">-</span>%</p>
+<p>Memory: <span id="mem">-</span>%</p>
+
+<button class="btn btn-primary" onclick="loadMetrics()">Refresh</button>
+
+<script>
+function loadMetrics() {
+  fetch("/api/metrics")
+    .then(r => r.json())
+    .then(d => {
+      document.getElementById("cpu").innerText = d.cpu;
+      document.getElementById("mem").innerText = d.memory;
+    });
+}
+
+setInterval(loadMetrics, 5000);
+loadMetrics();
+</script>
+{% endblock %}

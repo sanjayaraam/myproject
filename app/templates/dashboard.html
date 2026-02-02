@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<h3>📊 Dashboard</h3>
+
+<div class="row">
+  <div class="col-md-4"><div class="card p-3">Status: <span id="status">-</span></div></div>
+  <div class="col-md-4"><div class="card p-3">Environment: <span id="env">-</span></div></div>
+  <div class="col-md-4"><div class="card p-3">Version: <span id="version">-</span></div></div>
+</div>
+
+<script>
+fetch("/api/info")
+  .then(r => r.json())
+  .then(d => {
+    document.getElementById("env").innerText = d.environment;
+    document.getElementById("version").innerText = d.version;
+  });
+
+fetch("/api/health")
+  .then(r => r.json())
+  .then(d => {
+    document.getElementById("status").innerText = d.status;
+  });
+</script>
+{% endblock %}

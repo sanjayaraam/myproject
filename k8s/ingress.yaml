@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: myproject-ingress
+  name: sjproject-ingress
 spec:
   rules:
   - host: sj.project
@@ -11,6 +11,6 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: myproject-service
+            name: sjproject-service
             port:
               number: 80

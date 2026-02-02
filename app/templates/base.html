@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MyProject Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<nav class="navbar navbar-dark bg-dark px-3">
+  <span class="navbar-brand">🚀 MyProject</span>
+  <div>
+    <a class="nav-link d-inline text-white" href="/">Dashboard</a>
+    <a class="nav-link d-inline text-white" href="/metrics-ui">Metrics</a>
+    <a class="nav-link d-inline text-white" href="/build-ui">Build</a>
+    <a class="nav-link d-inline text-white" href="/about">About</a>
+  </div>
+</nav>
+
+<div class="container mt-4">
+  {% block content %}{% endblock %}
+</div>
+
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+.git/
+.gitignore
+__pycache__/
+*.pyc
+*.log
+.env
+node_modules/
+k8s/
+minikube-linux-amd64
+bkp_app.py
+plan.txt
+README.md

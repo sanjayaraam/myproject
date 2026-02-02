@@ -1,9 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: myproject
+  name: sjproject
   labels:
-    app: myproject
+    app: sjproject
 spec:
   replicas: 1
   strategy:
@@ -13,16 +13,18 @@ spec:
       maxUnavailable: 0
   selector:
     matchLabels:
-      app: myproject
+      app: sjproject
   template:
     metadata:
       labels:
-        app: myproject
+        app: sjproject
     spec:
       containers:
-        - name: myproject
-          image: sanjayaram/myproject:v16-20260202-174045
-          imagePullPolicy: IfNotPresent
+        - name: sjproject
+          # image: sanjayaram/myproject:v16-20260202-174045
+          # imagePullPolicy: IfNotPresent
+          image: sanjayaram/myapp:latest
+          imagePullPolicy: Always
           ports:
             - containerPort: 5000
 
