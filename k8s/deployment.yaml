@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
         - name: sjproject
-          # image: sanjayaram/myproject:v16-20260202-174045
+          # image: sanjayaram/myproject:v19-20260202-184915
           # imagePullPolicy: IfNotPresent
           image: sanjayaram/myapp:latest
           imagePullPolicy: Always
